@@ -1,10 +1,10 @@
 import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
-
+from init_db import initDB
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('./data/database.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -90,4 +90,5 @@ def delete(id):
 
 
 if __name__ == '__main__':
+        initDB()
         app.run(host='0.0.0.0')

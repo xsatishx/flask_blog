@@ -10,6 +10,6 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 
-RUN python init_db.py
+RUN mkdir /data
 
 CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "app:app"]

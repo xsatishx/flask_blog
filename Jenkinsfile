@@ -26,7 +26,7 @@ pipeline {
        stage('Build Docker Image') {
             steps {
              sh "sudo docker image build . --tag='devops-repo:1.0'"
-             sh "image_name=\$(sudo docker images | awk '{print \$3}' | awk 'NR==2') && sudo docker tag \$image_name 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo"
+             sh "image_name=\$(sudo docker images | awk '{print \$3}' | awk 'NR==2') && sudo docker tag \$image_name 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0"
             }
         }
         

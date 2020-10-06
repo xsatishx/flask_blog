@@ -7,8 +7,12 @@ WORKDIR /app
 ADD requirements.txt /app
 
 COPY . /app
+USER root
+
+RUN apk update && apk add apache2-dev && apk add gcc && apk add musl-dev
 
 RUN pip3 install -r requirements.txt
+
 
 RUN mkdir /data
 

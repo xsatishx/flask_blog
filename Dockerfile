@@ -12,4 +12,4 @@ RUN pip3 install -r requirements.txt
 
 RUN mkdir /data
 
-CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "hello:app"]
+CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "wsgi:app"]

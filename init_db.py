@@ -17,4 +17,3 @@ def initDB():
         connection.close()
     except:
         print("Ignore this as this is PoC")
-

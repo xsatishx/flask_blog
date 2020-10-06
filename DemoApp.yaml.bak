@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demoservice
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: demoapp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demoapp
+  template:
+    metadata:
+      labels:
+        app: demoapp
+    spec:
+      containers:
+      - name: demoapp
+        image: 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0
+        ports:
+        - containerPort: 8080

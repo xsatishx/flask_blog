@@ -22,7 +22,7 @@ pipeline {
             }
         }
        
-       // Stage 3: Build a Docker Image
+       // Stage 3: Build a Docker Image  - change tag to 1.0 or latest
        stage('Build Docker Image') {
             steps {
              sh "sudo docker image build . --tag='devops-repo:latest'"
@@ -30,7 +30,7 @@ pipeline {
             }
         }
         
-       // Stage 4: Push the image to registry    
+       // Stage 4: Push the image to registry - change tag to 1.0 or latest
        stage('Push to Registry') {
             steps {
              sh "sudo aws ecr get-login-password --region us-west-2 |sudo docker login --username AWS --password-stdin 065603381703.dkr.ecr.us-west-2.amazonaws.com"

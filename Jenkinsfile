@@ -25,7 +25,7 @@ pipeline {
        // Stage 3: Build a Docker Image
        stage('Build Docker Image') {
             steps {
-             sh "sudo docker image build . --tag='devops-repo:1.0'"
+             sh "sudo docker image build . --tag='devops-repo:latest'"
              sh "image_name=\$(sudo docker images | awk '{print \$3}' | awk 'NR==2') && sudo docker tag \$image_name 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0"
             }
         }
@@ -34,7 +34,7 @@ pipeline {
        stage('Push to Registry') {
             steps {
              sh "sudo aws ecr get-login-password --region us-west-2 |sudo docker login --username AWS --password-stdin 065603381703.dkr.ecr.us-west-2.amazonaws.com"
-             sh "sudo docker push 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0"
+             sh "sudo docker push 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:latest"
 
             }
         }
@@ -43,7 +43,7 @@ pipeline {
          stage('Kubernetes static Test') {
             steps {
              sh "kubeval demoapp.yaml"
-             sh "conftest test demoapp.yaml"
+            // sh "conftest test demoapp.yaml"
             }
         }
         

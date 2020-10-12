@@ -27,5 +27,6 @@ spec:
       containers:
       - name: flask
         image: 065603381703.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000

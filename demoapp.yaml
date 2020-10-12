@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-service
+  generateName: flask-service-
 spec:
   type: NodePort
   ports:
@@ -13,7 +13,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask
+  generateName: flask-
 spec:
   replicas: 1
   selector:

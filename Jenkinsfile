@@ -50,6 +50,7 @@ pipeline {
         // Stage 6: Deploy to test
          stage('Depoy to UAT') {
             steps {
+             sh "sudo kubectl delete pods -l app=flask"
              sh "sudo kubectl apply -f demoapp.yaml"
              sh "sleep 10s"
              sh "echo 'IP : 34.215.146.71'"

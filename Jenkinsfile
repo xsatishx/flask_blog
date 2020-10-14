@@ -65,25 +65,28 @@ pipeline {
             }
         }
 
-       // Deploy to Production
+
+stage('Approval Step'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required',
+                   parameters: [choice(name: 'Deploy?', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
+       
+	
+	// Deploy to Production
          stage('Deploy to Prod') {
             steps {
-                    def userInput = false
-        script {
-            def userInput = input(id: 'Proceed1', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
-            echo 'userInput: ' + userInput
-
-            if(userInput == true) {
                 sh "sleep 20s"
 		sh "echo Deployment Successul"
 		sh "sudo kubectl get svc | grep flask-service"
-            } else {
-                // not do action
-                echo "Action was aborted."
             }
 
-        }
-	    }
         }
 
  }

@@ -61,7 +61,7 @@ pipeline {
 	// Perform Functional tests
          stage('Functional Tests') {
             steps {
-             sh "sleep 60s"
+             sh "sh functional.sh"
             }
         }
 
@@ -82,7 +82,7 @@ stage('Approval Step'){
 	// Deploy to Production
          stage('Deploy to Prod') {
             steps {
-                sh "sleep 20s"
+                sh "sh deployprod.sh"
 		sh "echo Deployment Successul"
 		sh "sudo kubectl get svc | grep flask-service"
             }

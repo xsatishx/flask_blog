@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to CUSTOMER  FlaskBlog {% endblock %}</h1>
+<<<<<<< HEAD
+    <h1>{% block title %} Welcome to container  FlaskBlog {% endblock %}</h1>
+=======
+    <h1>{% block title %} Welcome to container  FlaskBlog {% endblock %}</h1>
+>>>>>>> eb9ec28e8e4f62d88b8bde7204b89c17f172e509
     {% for post in posts %}
         <a href="{{ url_for('post', post_id=post['id']) }}">
             <h2>{{ post['title'] }}</h2>

@@ -25,7 +25,7 @@ pipeline {
        // Stage 3: Build a Docker Image  - change tag to 1.0 or latest
        stage('Build Docker Image') {
             steps {
-             sh "sudo docker image build . --tag='devops-repo:latest'"
+             sh "sudo docker image build . --tag='devops-repo:1.0'"
              sh "image_name=\$(sudo docker images | awk '{print \$3}' | awk 'NR==2') && sudo docker tag \$image_name 403460303533.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0"
             }
         }

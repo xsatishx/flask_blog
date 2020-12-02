@@ -34,7 +34,7 @@ pipeline {
        stage('Push to Registry') {
             steps {
              sh "sudo aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 403460303533.dkr.ecr.us-west-2.amazonaws.com"
-             sh "sudo docker push 403460303533.dkr.ecr.us-west-2.amazonaws.com/devops-repo:latest"
+             sh "sudo docker push 403460303533.dkr.ecr.us-west-2.amazonaws.com/devops-repo:1.0"
 
             }
         }
